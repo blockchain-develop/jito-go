@@ -60,8 +60,8 @@ func (*GetTpuConfigsRequest) Descriptor() ([]byte, []int) {
 
 type GetTpuConfigsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Tpu           *Socket                `protobuf:"bytes,1,opt,name=tpu,proto3" json:"tpu,omitempty"`
-	TpuForward    *Socket                `protobuf:"bytes,2,opt,name=tpu_forward,json=tpuForward,proto3" json:"tpu_forward,omitempty"`
+	Tpu           *utils.Socket                `protobuf:"bytes,1,opt,name=tpu,proto3" json:"tpu,omitempty"`
+	TpuForward    *utils.Socket                `protobuf:"bytes,2,opt,name=tpu_forward,json=tpuForward,proto3" json:"tpu_forward,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -96,14 +96,14 @@ func (*GetTpuConfigsResponse) Descriptor() ([]byte, []int) {
 	return file_relayer_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetTpuConfigsResponse) GetTpu() *Socket {
+func (x *GetTpuConfigsResponse) GetTpu() *utils.Socket {
 	if x != nil {
 		return x.Tpu
 	}
 	return nil
 }
 
-func (x *GetTpuConfigsResponse) GetTpuForward() *Socket {
+func (x *GetTpuConfigsResponse) GetTpuForward() *utils.Socket {
 	if x != nil {
 		return x.TpuForward
 	}
@@ -148,7 +148,7 @@ func (*SubscribePacketsRequest) Descriptor() ([]byte, []int) {
 
 type SubscribePacketsResponse struct {
 	state  protoimpl.MessageState `protogen:"open.v1"`
-	Header *Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	Header *utils.Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	// Types that are valid to be assigned to Msg:
 	//
 	//	*SubscribePacketsResponse_Heartbeat
@@ -188,7 +188,7 @@ func (*SubscribePacketsResponse) Descriptor() ([]byte, []int) {
 	return file_relayer_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *SubscribePacketsResponse) GetHeader() *Header {
+func (x *SubscribePacketsResponse) GetHeader() *utils.Header {
 	if x != nil {
 		return x.Header
 	}
@@ -202,7 +202,7 @@ func (x *SubscribePacketsResponse) GetMsg() isSubscribePacketsResponse_Msg {
 	return nil
 }
 
-func (x *SubscribePacketsResponse) GetHeartbeat() *Heartbeat {
+func (x *SubscribePacketsResponse) GetHeartbeat() *utils.Heartbeat {
 	if x != nil {
 		if x, ok := x.Msg.(*SubscribePacketsResponse_Heartbeat); ok {
 			return x.Heartbeat
@@ -211,7 +211,7 @@ func (x *SubscribePacketsResponse) GetHeartbeat() *Heartbeat {
 	return nil
 }
 
-func (x *SubscribePacketsResponse) GetBatch() *PacketBatch {
+func (x *SubscribePacketsResponse) GetBatch() *utils.PacketBatch {
 	if x != nil {
 		if x, ok := x.Msg.(*SubscribePacketsResponse_Batch); ok {
 			return x.Batch
@@ -225,11 +225,11 @@ type isSubscribePacketsResponse_Msg interface {
 }
 
 type SubscribePacketsResponse_Heartbeat struct {
-	Heartbeat *Heartbeat `protobuf:"bytes,2,opt,name=heartbeat,proto3,oneof"`
+	Heartbeat *utils.Heartbeat `protobuf:"bytes,2,opt,name=heartbeat,proto3,oneof"`
 }
 
 type SubscribePacketsResponse_Batch struct {
-	Batch *PacketBatch `protobuf:"bytes,3,opt,name=batch,proto3,oneof"`
+	Batch *utils.PacketBatch `protobuf:"bytes,3,opt,name=batch,proto3,oneof"`
 }
 
 func (*SubscribePacketsResponse_Heartbeat) isSubscribePacketsResponse_Msg() {}
@@ -274,10 +274,10 @@ var file_relayer_proto_goTypes = []any{
 	(*GetTpuConfigsResponse)(nil),    // 1: relayer.GetTpuConfigsResponse
 	(*SubscribePacketsRequest)(nil),  // 2: relayer.SubscribePacketsRequest
 	(*SubscribePacketsResponse)(nil), // 3: relayer.SubscribePacketsResponse
-	(*Socket)(nil),                   // 4: shared.Socket
-	(*Header)(nil),                   // 5: shared.Header
-	(*Heartbeat)(nil),                // 6: shared.Heartbeat
-	(*PacketBatch)(nil),              // 7: packet.PacketBatch
+	(*utils.Socket)(nil),                   // 4: shared.Socket
+	(*utils.Header)(nil),                   // 5: shared.Header
+	(*utils.Heartbeat)(nil),                // 6: shared.Heartbeat
+	(*utils.PacketBatch)(nil),              // 7: packet.PacketBatch
 }
 var file_relayer_proto_depIdxs = []int32{
 	4, // 0: relayer.GetTpuConfigsResponse.tpu:type_name -> shared.Socket
@@ -301,8 +301,8 @@ func file_relayer_proto_init() {
 	if File_relayer_proto != nil {
 		return
 	}
-	file_packet_proto_init()
-	file_shared_proto_init()
+	utils.file_packet_proto_init()
+	utils.file_shared_proto_init()
 	file_relayer_proto_msgTypes[3].OneofWrappers = []any{
 		(*SubscribePacketsResponse_Heartbeat)(nil),
 		(*SubscribePacketsResponse_Batch)(nil),

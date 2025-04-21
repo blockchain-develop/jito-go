@@ -60,8 +60,8 @@ func (*SubscribePacketsRequest) Descriptor() ([]byte, []int) {
 
 type SubscribePacketsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Header        *Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
-	Batch         *PacketBatch           `protobuf:"bytes,2,opt,name=batch,proto3" json:"batch,omitempty"`
+	Header        *utils.Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	Batch         *utils.PacketBatch           `protobuf:"bytes,2,opt,name=batch,proto3" json:"batch,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -96,14 +96,14 @@ func (*SubscribePacketsResponse) Descriptor() ([]byte, []int) {
 	return file_block_engine_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SubscribePacketsResponse) GetHeader() *Header {
+func (x *SubscribePacketsResponse) GetHeader() *utils.Header {
 	if x != nil {
 		return x.Header
 	}
 	return nil
 }
 
-func (x *SubscribePacketsResponse) GetBatch() *PacketBatch {
+func (x *SubscribePacketsResponse) GetBatch() *utils.PacketBatch {
 	if x != nil {
 		return x.Batch
 	}
@@ -148,7 +148,7 @@ func (*SubscribeBundlesRequest) Descriptor() ([]byte, []int) {
 
 type SubscribeBundlesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Bundles       []*BundleUuid          `protobuf:"bytes,1,rep,name=bundles,proto3" json:"bundles,omitempty"`
+	Bundles       []*utils.BundleUuid          `protobuf:"bytes,1,rep,name=bundles,proto3" json:"bundles,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -183,7 +183,7 @@ func (*SubscribeBundlesResponse) Descriptor() ([]byte, []int) {
 	return file_block_engine_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *SubscribeBundlesResponse) GetBundles() []*BundleUuid {
+func (x *SubscribeBundlesResponse) GetBundles() []*utils.BundleUuid {
 	if x != nil {
 		return x.Bundles
 	}
@@ -490,8 +490,8 @@ func (x *ProgramsOfInterestUpdate) GetPrograms() []string {
 // This provides a more censorship resistant method to MEV than block engines receiving packets directly.
 type ExpiringPacketBatch struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Header        *Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
-	Batch         *PacketBatch           `protobuf:"bytes,2,opt,name=batch,proto3" json:"batch,omitempty"`
+	Header        *utils.Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	Batch         *utils.PacketBatch           `protobuf:"bytes,2,opt,name=batch,proto3" json:"batch,omitempty"`
 	ExpiryMs      uint32                 `protobuf:"varint,3,opt,name=expiry_ms,json=expiryMs,proto3" json:"expiry_ms,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -527,14 +527,14 @@ func (*ExpiringPacketBatch) Descriptor() ([]byte, []int) {
 	return file_block_engine_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *ExpiringPacketBatch) GetHeader() *Header {
+func (x *ExpiringPacketBatch) GetHeader() *utils.Header {
 	if x != nil {
 		return x.Header
 	}
 	return nil
 }
 
-func (x *ExpiringPacketBatch) GetBatch() *PacketBatch {
+func (x *ExpiringPacketBatch) GetBatch() *utils.PacketBatch {
 	if x != nil {
 		return x.Batch
 	}
@@ -610,7 +610,7 @@ func (x *PacketBatchUpdate) GetBatches() *ExpiringPacketBatch {
 	return nil
 }
 
-func (x *PacketBatchUpdate) GetHeartbeat() *Heartbeat {
+func (x *PacketBatchUpdate) GetHeartbeat() *utils.Heartbeat {
 	if x != nil {
 		if x, ok := x.Msg.(*PacketBatchUpdate_Heartbeat); ok {
 			return x.Heartbeat
@@ -628,7 +628,7 @@ type PacketBatchUpdate_Batches struct {
 }
 
 type PacketBatchUpdate_Heartbeat struct {
-	Heartbeat *Heartbeat `protobuf:"bytes,2,opt,name=heartbeat,proto3,oneof"`
+	Heartbeat *utils.Heartbeat `protobuf:"bytes,2,opt,name=heartbeat,proto3,oneof"`
 }
 
 func (*PacketBatchUpdate_Batches) isPacketBatchUpdate_Msg() {}
@@ -637,7 +637,7 @@ func (*PacketBatchUpdate_Heartbeat) isPacketBatchUpdate_Msg() {}
 
 type StartExpiringPacketStreamResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Heartbeat     *Heartbeat             `protobuf:"bytes,1,opt,name=heartbeat,proto3" json:"heartbeat,omitempty"`
+	Heartbeat     *utils.Heartbeat             `protobuf:"bytes,1,opt,name=heartbeat,proto3" json:"heartbeat,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -672,7 +672,7 @@ func (*StartExpiringPacketStreamResponse) Descriptor() ([]byte, []int) {
 	return file_block_engine_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *StartExpiringPacketStreamResponse) GetHeartbeat() *Heartbeat {
+func (x *StartExpiringPacketStreamResponse) GetHeartbeat() *utils.Heartbeat {
 	if x != nil {
 		return x.Heartbeat
 	}
@@ -752,10 +752,10 @@ var file_block_engine_proto_goTypes = []any{
 	(*ExpiringPacketBatch)(nil),               // 11: block_engine.ExpiringPacketBatch
 	(*PacketBatchUpdate)(nil),                 // 12: block_engine.PacketBatchUpdate
 	(*StartExpiringPacketStreamResponse)(nil), // 13: block_engine.StartExpiringPacketStreamResponse
-	(*Header)(nil),                            // 14: shared.Header
-	(*PacketBatch)(nil),                       // 15: packet.PacketBatch
-	(*BundleUuid)(nil),                        // 16: bundle.BundleUuid
-	(*Heartbeat)(nil),                         // 17: shared.Heartbeat
+	(*utils.Header)(nil),                            // 14: shared.Header
+	(*utils.PacketBatch)(nil),                       // 15: packet.PacketBatch
+	(*utils.BundleUuid)(nil),                        // 16: bundle.BundleUuid
+	(*utils.Heartbeat)(nil),                         // 17: shared.Heartbeat
 }
 var file_block_engine_proto_depIdxs = []int32{
 	14, // 0: block_engine.SubscribePacketsResponse.header:type_name -> shared.Header
@@ -790,9 +790,9 @@ func file_block_engine_proto_init() {
 	if File_block_engine_proto != nil {
 		return
 	}
-	file_packet_proto_init()
-	file_shared_proto_init()
-	file_bundle_proto_init()
+	utils.file_packet_proto_init()
+	utils.file_shared_proto_init()
+	utils.file_bundle_proto_init()
 	file_block_engine_proto_msgTypes[12].OneofWrappers = []any{
 		(*PacketBatchUpdate_Batches)(nil),
 		(*PacketBatchUpdate_Heartbeat)(nil),

@@ -113,7 +113,7 @@ func (x *ConnectedLeadersResponse) GetConnectedValidators() map[string]*SlotList
 
 type SendBundleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Bundle        *Bundle                `protobuf:"bytes,1,opt,name=bundle,proto3" json:"bundle,omitempty"`
+	Bundle        *utils.Bundle                `protobuf:"bytes,1,opt,name=bundle,proto3" json:"bundle,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -148,7 +148,7 @@ func (*SendBundleRequest) Descriptor() ([]byte, []int) {
 	return file_searcher_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *SendBundleRequest) GetBundle() *Bundle {
+func (x *SendBundleRequest) GetBundle() *utils.Bundle {
 	if x != nil {
 		return x.Bundle
 	}
@@ -729,8 +729,8 @@ var file_searcher_proto_goTypes = []any{
 	(*GetRegionsResponse)(nil),               // 13: searcher.GetRegionsResponse
 	nil,                                      // 14: searcher.ConnectedLeadersResponse.ConnectedValidatorsEntry
 	nil,                                      // 15: searcher.ConnectedLeadersRegionedResponse.ConnectedValidatorsEntry
-	(*Bundle)(nil),                           // 16: bundle.Bundle
-	(*BundleResult)(nil),                     // 17: bundle.BundleResult
+	(*utils.Bundle)(nil),                           // 16: bundle.Bundle
+	(*utils.BundleResult)(nil),                     // 17: bundle.BundleResult
 }
 var file_searcher_proto_depIdxs = []int32{
 	14, // 0: searcher.ConnectedLeadersResponse.connected_validators:type_name -> searcher.ConnectedLeadersResponse.ConnectedValidatorsEntry
@@ -764,7 +764,7 @@ func file_searcher_proto_init() {
 	if File_searcher_proto != nil {
 		return
 	}
-	file_bundle_proto_init()
+	utils.file_bundle_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

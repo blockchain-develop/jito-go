@@ -25,7 +25,7 @@ const (
 // Condensed block helpful for getting data around efficiently internal to our system.
 type CondensedBlock struct {
 	state                 protoimpl.MessageState `protogen:"open.v1"`
-	Header                *Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	Header                *utils.Header                `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	PreviousBlockhash     string                 `protobuf:"bytes,2,opt,name=previous_blockhash,json=previousBlockhash,proto3" json:"previous_blockhash,omitempty"`
 	Blockhash             string                 `protobuf:"bytes,3,opt,name=blockhash,proto3" json:"blockhash,omitempty"`
 	ParentSlot            uint64                 `protobuf:"varint,4,opt,name=parent_slot,json=parentSlot,proto3" json:"parent_slot,omitempty"`
@@ -66,7 +66,7 @@ func (*CondensedBlock) Descriptor() ([]byte, []int) {
 	return file_block_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CondensedBlock) GetHeader() *Header {
+func (x *CondensedBlock) GetHeader() *utils.Header {
 	if x != nil {
 		return x.Header
 	}
@@ -147,7 +147,7 @@ func file_block_proto_rawDescGZIP() []byte {
 var file_block_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_block_proto_goTypes = []any{
 	(*CondensedBlock)(nil), // 0: block.CondensedBlock
-	(*Header)(nil),         // 1: shared.Header
+	(*utils.Header)(nil),         // 1: shared.Header
 }
 var file_block_proto_depIdxs = []int32{
 	1, // 0: block.CondensedBlock.header:type_name -> shared.Header
@@ -163,7 +163,7 @@ func file_block_proto_init() {
 	if File_block_proto != nil {
 		return
 	}
-	file_shared_proto_init()
+	utils.file_shared_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

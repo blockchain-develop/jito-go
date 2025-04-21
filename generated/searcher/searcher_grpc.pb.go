@@ -74,7 +74,7 @@ func (c *searcherServiceClient) SubscribeBundleResults(ctx context.Context, in *
 }
 
 type SearcherService_SubscribeBundleResultsClient interface {
-	Recv() (*BundleResult, error)
+	Recv() (*utils.BundleResult, error)
 	grpc.ClientStream
 }
 
@@ -82,8 +82,8 @@ type searcherServiceSubscribeBundleResultsClient struct {
 	grpc.ClientStream
 }
 
-func (x *searcherServiceSubscribeBundleResultsClient) Recv() (*BundleResult, error) {
-	m := new(BundleResult)
+func (x *searcherServiceSubscribeBundleResultsClient) Recv() (*utils.BundleResult, error) {
+	m := new(utils.BundleResult)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -218,7 +218,7 @@ func _SearcherService_SubscribeBundleResults_Handler(srv interface{}, stream grp
 }
 
 type SearcherService_SubscribeBundleResultsServer interface {
-	Send(*BundleResult) error
+	Send(*utils.BundleResult) error
 	grpc.ServerStream
 }
 
@@ -226,7 +226,7 @@ type searcherServiceSubscribeBundleResultsServer struct {
 	grpc.ServerStream
 }
 
-func (x *searcherServiceSubscribeBundleResultsServer) Send(m *BundleResult) error {
+func (x *searcherServiceSubscribeBundleResultsServer) Send(m *utils.BundleResult) error {
 	return x.ServerStream.SendMsg(m)
 }
 
