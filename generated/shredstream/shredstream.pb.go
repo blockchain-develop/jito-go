@@ -13,7 +13,6 @@ import (
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-	"github.com/blockchain-develop/jito-go/utils"
 )
 
 const (
@@ -27,7 +26,7 @@ type Heartbeat struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// don't trust IP:PORT from tcp header since it can be tampered over the wire
 	// `socket.ip` must match incoming packet's ip. this prevents spamming an unwitting destination
-	Socket *utils.Socket `protobuf:"bytes,1,opt,name=socket,proto3" json:"socket,omitempty"`
+	Socket *Socket `protobuf:"bytes,1,opt,name=socket,proto3" json:"socket,omitempty"`
 	// regions for shredstream proxy to receive shreds from
 	// list of valid regions: https://docs.jito.wtf/lowlatencytxnsend/#api
 	Regions       []string `protobuf:"bytes,2,rep,name=regions,proto3" json:"regions,omitempty"`
@@ -65,7 +64,7 @@ func (*Heartbeat) Descriptor() ([]byte, []int) {
 	return file_shredstream_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Heartbeat) GetSocket() *utils.Socket {
+func (x *Heartbeat) GetSocket() *Socket {
 	if x != nil {
 		return x.Socket
 	}
@@ -321,7 +320,7 @@ var file_shredstream_proto_goTypes = []any{
 	(*TraceShred)(nil),              // 2: shredstream.TraceShred
 	(*SubscribeEntriesRequest)(nil), // 3: shredstream.SubscribeEntriesRequest
 	(*Entry)(nil),                   // 4: shredstream.Entry
-	(*utils.Socket)(nil),                  // 5: shared.Socket
+	(*Socket)(nil),                  // 5: shared.Socket
 	(*timestamppb.Timestamp)(nil),   // 6: google.protobuf.Timestamp
 }
 var file_shredstream_proto_depIdxs = []int32{
@@ -343,7 +342,7 @@ func file_shredstream_proto_init() {
 	if File_shredstream_proto != nil {
 		return
 	}
-	utils.file_shared_proto_init()
+	file_shared_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

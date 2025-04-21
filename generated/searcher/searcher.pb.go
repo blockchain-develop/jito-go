@@ -12,7 +12,6 @@ import (
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-	"github.com/blockchain-develop/jito-go/utils"
 )
 
 const (
@@ -113,7 +112,7 @@ func (x *ConnectedLeadersResponse) GetConnectedValidators() map[string]*SlotList
 
 type SendBundleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Bundle        *utils.Bundle                `protobuf:"bytes,1,opt,name=bundle,proto3" json:"bundle,omitempty"`
+	Bundle        *Bundle                `protobuf:"bytes,1,opt,name=bundle,proto3" json:"bundle,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -148,7 +147,7 @@ func (*SendBundleRequest) Descriptor() ([]byte, []int) {
 	return file_searcher_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *SendBundleRequest) GetBundle() *utils.Bundle {
+func (x *SendBundleRequest) GetBundle() *Bundle {
 	if x != nil {
 		return x.Bundle
 	}
@@ -729,8 +728,8 @@ var file_searcher_proto_goTypes = []any{
 	(*GetRegionsResponse)(nil),               // 13: searcher.GetRegionsResponse
 	nil,                                      // 14: searcher.ConnectedLeadersResponse.ConnectedValidatorsEntry
 	nil,                                      // 15: searcher.ConnectedLeadersRegionedResponse.ConnectedValidatorsEntry
-	(*utils.Bundle)(nil),                           // 16: bundle.Bundle
-	(*utils.BundleResult)(nil),                     // 17: bundle.BundleResult
+	(*Bundle)(nil),                           // 16: bundle.Bundle
+	(*BundleResult)(nil),                     // 17: bundle.BundleResult
 }
 var file_searcher_proto_depIdxs = []int32{
 	14, // 0: searcher.ConnectedLeadersResponse.connected_validators:type_name -> searcher.ConnectedLeadersResponse.ConnectedValidatorsEntry
@@ -764,7 +763,7 @@ func file_searcher_proto_init() {
 	if File_searcher_proto != nil {
 		return
 	}
-	utils.file_bundle_proto_init()
+	file_bundle_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

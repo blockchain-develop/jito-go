@@ -12,7 +12,6 @@ import (
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-	"github.com/blockchain-develop/jito-go/utils"
 )
 
 const (
@@ -75,8 +74,8 @@ func (DroppedReason) EnumDescriptor() ([]byte, []int) {
 
 type Bundle struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Header        *utils.Header                `protobuf:"bytes,2,opt,name=header,proto3" json:"header,omitempty"`
-	Packets       []*utils.Packet              `protobuf:"bytes,3,rep,name=packets,proto3" json:"packets,omitempty"`
+	Header        *Header                `protobuf:"bytes,2,opt,name=header,proto3" json:"header,omitempty"`
+	Packets       []*Packet              `protobuf:"bytes,3,rep,name=packets,proto3" json:"packets,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,14 +110,14 @@ func (*Bundle) Descriptor() ([]byte, []int) {
 	return file_bundle_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Bundle) GetHeader() *utils.Header {
+func (x *Bundle) GetHeader() *Header {
 	if x != nil {
 		return x.Header
 	}
 	return nil
 }
 
-func (x *Bundle) GetPackets() []*utils.Packet {
+func (x *Bundle) GetPackets() []*Packet {
 	if x != nil {
 		return x.Packets
 	}
@@ -1011,8 +1010,8 @@ var file_bundle_proto_goTypes = []any{
 	(*Processed)(nil),               // 11: bundle.Processed
 	(*Dropped)(nil),                 // 12: bundle.Dropped
 	(*BundleResult)(nil),            // 13: bundle.BundleResult
-	(*utils.Header)(nil),                  // 14: shared.Header
-	(*utils.Packet)(nil),                  // 15: packet.Packet
+	(*Header)(nil),                  // 14: shared.Header
+	(*Packet)(nil),                  // 15: packet.Packet
 }
 var file_bundle_proto_depIdxs = []int32{
 	14, // 0: bundle.Bundle.header:type_name -> shared.Header
@@ -1041,8 +1040,8 @@ func file_bundle_proto_init() {
 	if File_bundle_proto != nil {
 		return
 	}
-	utils.file_packet_proto_init()
-	utils.file_shared_proto_init()
+	file_packet_proto_init()
+	file_shared_proto_init()
 	file_bundle_proto_msgTypes[3].OneofWrappers = []any{
 		(*Rejected_StateAuctionBidRejected)(nil),
 		(*Rejected_WinningBatchBidRejected)(nil),

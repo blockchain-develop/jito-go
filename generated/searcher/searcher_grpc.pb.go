@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	"github.com/blockchain-develop/jito-go/utils"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -74,7 +73,7 @@ func (c *searcherServiceClient) SubscribeBundleResults(ctx context.Context, in *
 }
 
 type SearcherService_SubscribeBundleResultsClient interface {
-	Recv() (*utils.BundleResult, error)
+	Recv() (*BundleResult, error)
 	grpc.ClientStream
 }
 
@@ -82,8 +81,8 @@ type searcherServiceSubscribeBundleResultsClient struct {
 	grpc.ClientStream
 }
 
-func (x *searcherServiceSubscribeBundleResultsClient) Recv() (*utils.BundleResult, error) {
-	m := new(utils.BundleResult)
+func (x *searcherServiceSubscribeBundleResultsClient) Recv() (*BundleResult, error) {
+	m := new(BundleResult)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -218,7 +217,7 @@ func _SearcherService_SubscribeBundleResults_Handler(srv interface{}, stream grp
 }
 
 type SearcherService_SubscribeBundleResultsServer interface {
-	Send(*utils.BundleResult) error
+	Send(*BundleResult) error
 	grpc.ServerStream
 }
 
@@ -226,7 +225,7 @@ type searcherServiceSubscribeBundleResultsServer struct {
 	grpc.ServerStream
 }
 
-func (x *searcherServiceSubscribeBundleResultsServer) Send(m *utils.BundleResult) error {
+func (x *searcherServiceSubscribeBundleResultsServer) Send(m *BundleResult) error {
 	return x.ServerStream.SendMsg(m)
 }
 
